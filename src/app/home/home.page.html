@@ -1,0 +1,53 @@
+<!-- 
+<ion-header >
+  <ion-toolbar color="tertiary" >
+    <ion-title>
+      Perfil
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+   <ion-card class="p-3" color="primary" *ngIf="user">
+    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+    <ion-card-header >
+      <ion-card-title> Bienvenido, {{ nombre }}</ion-card-title>
+      <ion-card-subtitle>Correo: {{user.email}}</ion-card-subtitle>
+    </ion-card-header>
+    "El que sufre antes de que sea necesario, sufre más que lo necesario". Esta es una famosa frase del filósofo estoico Séneca, que significa que si nos adelantamos a los problemas y sufrimos por ellos antes de que realmente ocurran, estamos haciendo que nuestro dolor sea más grande de lo que debería ser. En cambio, debemos enfrentar los problemas cuando realmente se presenten y tratar de no anticiparlos innecesariamente.
+    <ion-card-content>
+      
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" (click)="logout()">Cerrar sesión</ion-button>
+</ion-content> -->
+
+<ion-content *ngIf="isPortrait" >
+
+  <ion-content *ngIf="isUnlock" class=" vw-100 vh-100 bg-warning">
+    <button (click)="iniciarSensado()" class="btn rounded-5 btn-primary vw-100 vh-100 bg-primary" id="myButton"><ion-icon style="font-size: 75vw;" name="lock-closed"></ion-icon></button>
+  </ion-content>
+  <ion-content *ngIf="!isUnlock" class=" vw-100 vh-100 bg-warning">
+    <button (click)="verificarClave()" class="btn-11 vw-100 vh-100 bg-danger" id="myButton"><ion-icon style="font-size: 75vw;" name="lock-open"></ion-icon></button>
+  </ion-content>
+</ion-content>
+<ion-content *ngIf="!isPortrait" >
+
+  <ion-content *ngIf="isUnlock" class="  vw-100 vh-100 bg-warning">
+    <button (click)="iniciarSensado()" class="btn rounded-5 btn-primary vw-100 vh-100 bg-primary" id="myButton"><ion-icon style="font-size: 75vh;" name="lock-closed"></ion-icon></button>
+  </ion-content>
+  <ion-content *ngIf="!isUnlock" class=" vw-100 vh-100 bg-warning">
+    <button (click)="verificarClave()" class="btn-11 vw-100 vh-100 bg-danger" id="myButton"><ion-icon style="font-size: 75vh;" name="lock-open"></ion-icon></button>
+  </ion-content>
+
+</ion-content>
+
+<ion-fab *ngIf="isUnlock" vertical="bottom" horizontal="start" slot="fixed">
+  <ion-fab-button (click)="logout()">
+    <ion-icon name="log-out-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<ion-loading class="custom-loading" trigger="open-loading" message="Loading..." [duration]="3000"></ion-loading>
+

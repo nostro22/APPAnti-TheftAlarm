@@ -1,0 +1,75 @@
+<ion-content >
+  <ion-header class="ion-text-center rounded-bottom-5 ">
+    <ion-toolbar color="primary" class="rounded-bottom-5">
+      <ion-title>Ingreso</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-grid >
+    <ion-row class="ion-justify-content-center align-items-center  ">
+      <ion-img class=" bounce-top heartbeat " src="../../assets/app3IconS.png"></ion-img>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center ion-align-items-center ">
+      <ion-accordion-group #accordionGroup checked="true">
+        <ion-accordion class="rounded-5 " color="primary" value="first">
+          <ion-item slot="header" color="primary">
+            <ion-label>Acceso Rapido</ion-label>
+          </ion-item>
+          <ng-container *ngFor="let account of accounts">
+            <ion-label color="primary" (click)="llenarUsuario(account.id)" class="ion-padding fw-bold " slot="content">
+              {{account.label}}
+            </ion-label>
+          </ng-container>
+        </ion-accordion>
+      </ion-accordion-group>
+    </ion-row>
+
+    <form [formGroup]="formUser" class="login-form mb-2 ">
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="10">
+          <ion-item color="tertiary" class=" rounded-5 mt-2">
+            <ion-label position="stacked"><ion-icon name="mail-unread-sharp"></ion-icon> | Correo
+              Electronico</ion-label>
+            <ion-input formControlName="email" type="email" maxlength="20"></ion-input>
+            <div [hidden]="email.valid || email.pristine">
+              <div class="alert alert-danger fw-normal" *ngIf="email.errors?.['required']">Correo electronico es
+                requerido.</div>
+              <div class="alert alert-danger fw-light" *ngIf="email.hasError('pattern')">Correo electronico en formato
+                incorrecto.
+              </div>
+            </div>
+          </ion-item>
+
+          <ion-item color="tertiary" class="rounded-5 mt-2">
+            <ion-label position="stacked"> <ion-icon name="lock-closed-sharp"></ion-icon> | Clave</ion-label>
+            <ion-input formControlName="password" type="password" maxlength="13"></ion-input>
+            <div [hidden]="password.valid || (password.pristine)">
+              <div *ngIf="password.errors?.['required']" class="alert alert-danger fw-normal">Clave es requerido.</div>
+              <div *ngIf="password.errors?.['minlength']" class="alert alert-danger fw-light">clave debe tener minimo 6
+                caracteres</div>
+              <div *ngIf="password.hasError('maxlength')" class="alert alert-danger fw-light">clave debe tener maximo 12
+                caracteres</div>
+            </div>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center ion-align-items-center">
+        <ion-col class="align-items-center" size="5">
+          <ion-button [disabled]="formUser.invalid" color="tertiary" id="open-loading" expand="block"
+            class="login-button" (click)="login()">Ingresar</ion-button>
+        </ion-col>
+        <ion-col size="4">
+          <ion-button (click)="clear()">Limpiar</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+
+    <ion-loading class="custom-loading" trigger="open-loading" message="Loading..." [duration]="3000"></ion-loading>
+  </ion-grid>
+  <ion-footer class=" rounded-bottom-5  ">
+    <ion-toolbar color="primary" class="rounded-top-5">
+      <ion-title class="ion-text-center">Ingreso</ion-title>
+    </ion-toolbar>
+  </ion-footer>
+</ion-content>

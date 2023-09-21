@@ -1,0 +1,114 @@
+h1 {
+    font-family: 'Italiana', sans-serif !important;
+    font-size: xx-large;
+    color: aliceblue;
+}
+
+ion-grid {
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+ion-row {
+    height: 33vh;
+    width: 100vw;
+}
+
+.back-ground-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-animation-container,
+.bottom-animation-container,
+.mid-animation-container {
+    margin: auto;
+    z-index: 1;
+    align-self: center;
+    width: 100%;
+}
+
+.mid-animation-container .animated {
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-name: heartbeat;
+    ;
+    animation-iteration-count: 1;
+    animation-duration: 5.5s;
+}
+
+.top-animation-container .animated {
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-name: heartbeat;
+    animation-iteration-count: 1;
+    animation-duration: 2.5s;
+    animation-delay: 2s;
+}
+
+
+.bottom-animation-container .animated {
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-name: heartbeat;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-delay: 3s;
+
+}
+
+
+
+
+
+.heartbeat {
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+
+@keyframes heartbeat {
+    from {
+        transform: scale(1);
+        transform-origin: center center;
+        animation-timing-function: ease-out;
+        opacity: 1;
+    }
+
+    10% {
+        transform: scale(.91);
+        animation-timing-function: ease-in;
+        opacity: 1;
+    }
+
+    17% {
+        transform: scale(.98);
+        animation-timing-function: ease-out;
+        opacity: 1;
+    }
+
+    33% {
+        transform: scale(.87);
+        animation-timing-function: ease-in;
+        opacity: 1;
+    }
+
+    45% {
+        transform: scale(1);
+        animation-timing-function: ease-out;
+        opacity: 1;
+    }
+}
+
+.seccion {
+    font-size: 5rem;
+}
